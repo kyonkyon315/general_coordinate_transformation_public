@@ -1,0 +1,54 @@
++ echo '================ Slurm Info ================'
+++ date --iso-8601=seconds
++ echo 'DATE      = 2026-04-13T01:22:04+09:00'
++ echo 'JOB_ID    = 7396811'
++ echo 'NNODES    = 1'
++ echo 'NTASKS    = 1'
++ echo 'CPUS/TASK = 8'
++ echo ============================================
++ module purge
++ _module_raw purge
++ module load PrgEnvIntel/2023
++ _module_raw load PrgEnvIntel/2023
++ echo 'LD_LIBRARY_PATH = /opt/system/app/intel/2023.2/mpi/2021.12/libfabric/lib:/opt/system/app/intel/2023.2/mpi/2021.12/lib/release:/opt/system/app/intel/2023.2/mpi/2021.12/lib:/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/intel64:/opt/system/app/intel/2023.2/tbb/2021.10.0/lib/intel64/gcc4.8:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib/x64:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/compiler/lib/intel64_lin'
++ source /home/b/b39211/pyenv/bin/activate
+++ deactivate nondestructive
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ '[' -n /bin/bash -o -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ '[' '!' nondestructive = nondestructive ']'
+++ VIRTUAL_ENV=/home/b/b39211/pyenv
+++ export VIRTUAL_ENV
+++ _OLD_VIRTUAL_PATH=/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/bin:/opt/system/app/intel/2023.2/mpi/2021.12/bin:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/bin/intel64:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/bin:/home/b/b39211/.local/bin:/home/b/b39211/bin:/usr/share/Modules/bin:/usr/local/gfarm/bin:/opt/system/dpc-tools/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+++ PATH=/home/b/b39211/pyenv/bin:/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/bin:/opt/system/app/intel/2023.2/mpi/2021.12/bin:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/bin/intel64:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/bin:/home/b/b39211/.local/bin:/home/b/b39211/bin:/usr/share/Modules/bin:/usr/local/gfarm/bin:/opt/system/dpc-tools/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1=
+++ '[' 'x(pyenv) ' '!=' x ']'
+++ PS1='(pyenv) '
+++ export PS1
+++ '[' -n /bin/bash -o -n '' ']'
+++ hash -r
++ echo 'Python path:'
++ which python3
++ alias
++ eval declare -f
+++ declare -f
++ /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot python3
++ python3 --version
++ export OMP_NUM_THREADS=1
++ OMP_NUM_THREADS=1
++ export MKL_NUM_THREADS=1
++ MKL_NUM_THREADS=1
++ export OPENBLAS_NUM_THREADS=1
++ OPENBLAS_NUM_THREADS=1
++ export NPROC=8
++ NPROC=8
++ echo 'NPROC = 8'
++ echo 'Start Python job'
++ srun -n 1 python3 visualize.py
++ echo Finished

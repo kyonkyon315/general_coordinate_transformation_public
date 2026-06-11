@@ -1,0 +1,16 @@
+================ Slurm Info ================
+DATE      = 2026-04-13T01:24:11+09:00
+PARTITION = gr20001a
+JOB_ID    = 7396813
+JOB_NAME  = run.sh
+NNODES    = 1
+RSC_OPT   = p=1:t=1:c=1:m=1G
+============================================
+Compiler:
+Intel(R) oneAPI DPC++/C++ Compiler 2023.2.4 (2023.2.4.20240127)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /opt/system/app/intel/2023.2/compiler/2023.2.4/linux/bin-llvm
+Configuration file: /opt/system/app/intel/2023.2/compiler/2023.2.4/linux/bin-llvm/../bin/icpx.cfg
+Current dir:
+/home/b/b39211/Documents/general_coodinate_transformation/visualizer/cross_section_visualize

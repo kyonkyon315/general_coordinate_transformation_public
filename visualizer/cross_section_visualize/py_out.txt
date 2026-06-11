@@ -1,0 +1,319 @@
+================ Slurm Info ================
+DATE      = 2026-04-13T01:22:04+09:00
+PARTITION = gr20001a
+JOB_ID    = 7396811
+JOB_NAME  = run_py.sh
+NNODES    = 1
+RSC_OPT   = p=1:t=1:c=1:m=4G
+============================================
+================ Slurm Info ================
+DATE      = 2026-04-13T01:22:04+09:00
+JOB_ID    = 7396811
+NNODES    = 1
+NTASKS    = 1
+CPUS/TASK = 8
+============================================
++ unset _mlshdbg
++ '[' 0 = 1 ']'
++ unset _mlre _mlIFS
++ '[' -n x ']'
++ _mlIFS=' 	
+'
++ IFS=' '
++ for _mlv in ${MODULES_RUN_QUARANTINE:-}
++ '[' LD_LIBRARY_PATH = LD_LIBRARY_PATH -a LD_LIBRARY_PATH = LD_LIBRARY_PATH ']'
+++ eval 'echo ${LD_LIBRARY_PATH+x}'
++++ echo x
++ '[' -n x ']'
+++ eval 'echo ${LD_LIBRARY_PATH}'
++++ echo /opt/system/app/intel/2023.2/mpi/2021.12/libfabric/lib:/opt/system/app/intel/2023.2/mpi/2021.12/lib/release:/opt/system/app/intel/2023.2/mpi/2021.12/lib:/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/intel64:/opt/system/app/intel/2023.2/tbb/2021.10.0/lib/intel64/gcc4.8:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib/x64:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/compiler/lib/intel64_lin
++ _mlre='LD_LIBRARY_PATH_modquar='\''/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/lib:/opt/system/app/intel/2023.2/mpi/2021.12/lib/release:/opt/system/app/intel/2023.2/mpi/2021.12/lib:/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/intel64:/opt/system/app/intel/2023.2/tbb/2021.10.0/lib/intel64/gcc4.8:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib/x64:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/compiler/lib/intel64_lin'\'' '
++ _mlrv=MODULES_RUNENV_LD_LIBRARY_PATH
+++ eval 'echo ${MODULES_RUNENV_LD_LIBRARY_PATH:-}'
++++ echo
++ _mlre='LD_LIBRARY_PATH_modquar='\''/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/lib:/opt/system/app/intel/2023.2/mpi/2021.12/lib/release:/opt/system/app/intel/2023.2/mpi/2021.12/lib:/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/intel64:/opt/system/app/intel/2023.2/tbb/2021.10.0/lib/intel64/gcc4.8:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib/x64:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/compiler/lib/intel64_lin'\'' LD_LIBRARY_PATH='\'''\'' '
++ for _mlv in ${MODULES_RUN_QUARANTINE:-}
++ '[' LD_PRELOAD = LD_PRELOAD -a LD_PRELOAD = LD_PRELOAD ']'
+++ eval 'echo ${LD_PRELOAD+x}'
++++ echo
++ '[' -n '' ']'
++ _mlrv=MODULES_RUNENV_LD_PRELOAD
+++ eval 'echo ${MODULES_RUNENV_LD_PRELOAD:-}'
++++ echo
++ _mlre='LD_LIBRARY_PATH_modquar='\''/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/lib:/opt/system/app/intel/2023.2/mpi/2021.12/lib/release:/opt/system/app/intel/2023.2/mpi/2021.12/lib:/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/intel64:/opt/system/app/intel/2023.2/tbb/2021.10.0/lib/intel64/gcc4.8:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib/x64:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/compiler/lib/intel64_lin'\'' LD_LIBRARY_PATH='\'''\'' LD_PRELOAD='\'''\'' '
++ '[' -n 'LD_LIBRARY_PATH_modquar='\''/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/lib:/opt/system/app/intel/2023.2/mpi/2021.12/lib/release:/opt/system/app/intel/2023.2/mpi/2021.12/lib:/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/intel64:/opt/system/app/intel/2023.2/tbb/2021.10.0/lib/intel64/gcc4.8:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib/x64:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/compiler/lib/intel64_lin'\'' LD_LIBRARY_PATH='\'''\'' LD_PRELOAD='\'''\'' ' ']'
+++ eval 'LD_LIBRARY_PATH_modquar='\''/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/lib:/opt/system/app/intel/2023.2/mpi/2021.12/lib/release:/opt/system/app/intel/2023.2/mpi/2021.12/lib:/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/intel64:/opt/system/app/intel/2023.2/tbb/2021.10.0/lib/intel64/gcc4.8:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib/x64:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/compiler/lib/intel64_lin'\''' 'LD_LIBRARY_PATH='\'''\''' 'LD_PRELOAD='\'''\''' /usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash '"$@"'
++++ LD_LIBRARY_PATH_modquar=/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/lib:/opt/system/app/intel/2023.2/mpi/2021.12/lib/release:/opt/system/app/intel/2023.2/mpi/2021.12/lib:/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/intel64:/opt/system/app/intel/2023.2/tbb/2021.10.0/lib/intel64/gcc4.8:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib/x64:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/compiler/lib/intel64_lin
++++ LD_LIBRARY_PATH=
++++ LD_PRELOAD=
++++ /usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash purge
++ eval unset 'OCL_ICD_FILENAMES;
+unset' 'CPATH;
+unset' 'LD_LIBRARY_PATH;
+unset' 'MODULES_LMPREREQ;
+unset' 'CMPLR_ROOT;
+unset' 'I_MPI_ROOT;
+MANPATH=/usr/share/man:/usr/local/gfarm/share/man;' export 'MANPATH;
+unset' 'LIBRARY_PATH;
+unset' 'CMAKE_PREFIX_PATH;
+unset' 'LOADEDMODULES;
+unset' '_LMFILES_;
+unset' 'PKG_CONFIG_PATH;
+MANPATH_modshare=/usr/local/gfarm/share/man:1:/usr/share/man:1;' export 'MANPATH_modshare;
+unset' 'LIBRARY_PATH_modshare;
+unset' 'MODULES_LMCONFLICT;
+unset' 'MODULES_LMALTNAME;
+unset' 'TBBROOT;
+unset' 'NLSPATH_modshare;
+unset' 'PKG_CONFIG_PATH_modshare;
+unset' 'MODULES_LMCONFLICT_modshare;
+unset' 'MODULES_LMALTNAME_modshare;
+unset' 'MODULES_LMNOTUASKED;
+unset' 'SLURM_CONF;
+unset' 'MKLROOT;
+unset' 'MODULES_LMNOTUASKED_modshare;
+unset' 'NLSPATH;
+unset' 'OCL_ICD_FILENAMES_modshare;
+unset' 'CPATH_modshare;
+unset' 'LD_LIBRARY_PATH_modshare;
+unset' 'MODULES_LMPREREQ_modshare;
+unset' 'DPL_ROOT;
+unset' 'CLASSPATH;
+MODULEPATH=/etc/scl/modulefiles:/opt/system/app/env/SubSys:/opt/system/app/env/PrgEnv;' export 'MODULEPATH;
+unset' 'CMAKE_PREFIX_PATH_modshare;
+unset' 'LOADEDMODULES_modshare;
+unset' '_LMFILES__modshare;
+unset' 'FI_PROVIDER_PATH;
+unset' 'CLASSPATH_modshare;
+PATH=/home/b/b39211/.local/bin:/home/b/b39211/bin:/usr/share/Modules/bin:/usr/local/gfarm/bin:/opt/system/dpc-tools/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin;' export 'PATH;
+MODULEPATH_modshare=/etc/scl/modulefiles:1:/opt/system/app/env/SubSys:1:/opt/system/app/env/PrgEnv:1;' export 'MODULEPATH_modshare;
+unset' 'FI_PROVIDER_PATH_modshare;
+PATH_modshare=/usr/sbin:1:/usr/bin:1:/home/b/b39211/.local/bin:1:/home/b/b39211/bin:1:/opt/system/dpc-tools/bin:1:/usr/local/sbin:1:/usr/share/Modules/bin:1:/usr/local/gfarm/bin:1:/usr/local/bin:1;' export 'PATH_modshare;
+test' '0;'
+++ unset OCL_ICD_FILENAMES
+++ unset CPATH
+++ unset LD_LIBRARY_PATH
+++ unset MODULES_LMPREREQ
+++ unset CMPLR_ROOT
+++ unset I_MPI_ROOT
+++ MANPATH=/usr/share/man:/usr/local/gfarm/share/man
+++ export MANPATH
+++ unset LIBRARY_PATH
+++ unset CMAKE_PREFIX_PATH
+++ unset LOADEDMODULES
+++ unset _LMFILES_
+++ unset PKG_CONFIG_PATH
+++ MANPATH_modshare=/usr/local/gfarm/share/man:1:/usr/share/man:1
+++ export MANPATH_modshare
+++ unset LIBRARY_PATH_modshare
+++ unset MODULES_LMCONFLICT
+++ unset MODULES_LMALTNAME
+++ unset TBBROOT
+++ unset NLSPATH_modshare
+++ unset PKG_CONFIG_PATH_modshare
+++ unset MODULES_LMCONFLICT_modshare
+++ unset MODULES_LMALTNAME_modshare
+++ unset MODULES_LMNOTUASKED
+++ unset SLURM_CONF
+++ unset MKLROOT
+++ unset MODULES_LMNOTUASKED_modshare
+++ unset NLSPATH
+++ unset OCL_ICD_FILENAMES_modshare
+++ unset CPATH_modshare
+++ unset LD_LIBRARY_PATH_modshare
+++ unset MODULES_LMPREREQ_modshare
+++ unset DPL_ROOT
+++ unset CLASSPATH
+++ MODULEPATH=/etc/scl/modulefiles:/opt/system/app/env/SubSys:/opt/system/app/env/PrgEnv
+++ export MODULEPATH
+++ unset CMAKE_PREFIX_PATH_modshare
+++ unset LOADEDMODULES_modshare
+++ unset _LMFILES__modshare
+++ unset FI_PROVIDER_PATH
+++ unset CLASSPATH_modshare
+++ PATH=/home/b/b39211/.local/bin:/home/b/b39211/bin:/usr/share/Modules/bin:/usr/local/gfarm/bin:/opt/system/dpc-tools/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+++ export PATH
+++ MODULEPATH_modshare=/etc/scl/modulefiles:1:/opt/system/app/env/SubSys:1:/opt/system/app/env/PrgEnv:1
+++ export MODULEPATH_modshare
+++ unset FI_PROVIDER_PATH_modshare
+++ PATH_modshare=/usr/sbin:1:/usr/bin:1:/home/b/b39211/.local/bin:1:/home/b/b39211/bin:1:/opt/system/dpc-tools/bin:1:/usr/local/sbin:1:/usr/share/Modules/bin:1:/usr/local/gfarm/bin:1:/usr/local/bin:1
+++ export PATH_modshare
+++ test 0
++ _mlstatus=0
++ '[' -n x ']'
++ IFS=' 	
+'
++ unset _mlre _mlv _mlrv _mlIFS
++ '[' -n '' ']'
++ unset _mlshdbg
++ return 0
++ unset _mlshdbg
++ '[' 0 = 1 ']'
++ unset _mlre _mlIFS
++ '[' -n x ']'
++ _mlIFS=' 	
+'
++ IFS=' '
++ for _mlv in ${MODULES_RUN_QUARANTINE:-}
++ '[' LD_LIBRARY_PATH = LD_LIBRARY_PATH -a LD_LIBRARY_PATH = LD_LIBRARY_PATH ']'
+++ eval 'echo ${LD_LIBRARY_PATH+x}'
++++ echo
++ '[' -n '' ']'
++ _mlrv=MODULES_RUNENV_LD_LIBRARY_PATH
+++ eval 'echo ${MODULES_RUNENV_LD_LIBRARY_PATH:-}'
++++ echo
++ _mlre='LD_LIBRARY_PATH='\'''\'' '
++ for _mlv in ${MODULES_RUN_QUARANTINE:-}
++ '[' LD_PRELOAD = LD_PRELOAD -a LD_PRELOAD = LD_PRELOAD ']'
+++ eval 'echo ${LD_PRELOAD+x}'
++++ echo
++ '[' -n '' ']'
++ _mlrv=MODULES_RUNENV_LD_PRELOAD
+++ eval 'echo ${MODULES_RUNENV_LD_PRELOAD:-}'
++++ echo
++ _mlre='LD_LIBRARY_PATH='\'''\'' LD_PRELOAD='\'''\'' '
++ '[' -n 'LD_LIBRARY_PATH='\'''\'' LD_PRELOAD='\'''\'' ' ']'
+++ eval 'LD_LIBRARY_PATH='\'''\''' 'LD_PRELOAD='\'''\''' /usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash '"$@"'
++++ LD_LIBRARY_PATH=
++++ LD_PRELOAD=
++++ /usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash load PrgEnvIntel/2023
++ eval 'MODULES_LMPREREQ=PrgEnvIntel/2023\&intel/2023.2\&intelmpi/2023.2;' export 'MODULES_LMPREREQ;
+CPATH=/opt/system/app/intel/2023.2/mpi/2021.12/include:/opt/system/app/intel/2023.2/dpl/2022.2.0/linux/include:/opt/system/app/intel/2023.2/mkl/2023.2.0/include:/opt/system/app/intel/2023.2/tbb/2021.10.0/include;' export 'CPATH;
+LD_LIBRARY_PATH=/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/lib:/opt/system/app/intel/2023.2/mpi/2021.12/lib/release:/opt/system/app/intel/2023.2/mpi/2021.12/lib:/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/intel64:/opt/system/app/intel/2023.2/tbb/2021.10.0/lib/intel64/gcc4.8:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib/x64:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/compiler/lib/intel64_lin;' export 'LD_LIBRARY_PATH;
+OCL_ICD_FILENAMES=/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib/x64/libintelocl.so;' export 'OCL_ICD_FILENAMES;
+I_MPI_ROOT=/opt/system/app/intel/2023.2/mpi/2021.12;' export 'I_MPI_ROOT;
+LIBRARY_PATH=/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/lib:/opt/system/app/intel/2023.2/mpi/2021.12/lib/release:/opt/system/app/intel/2023.2/mpi/2021.12/lib:/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/intel64:/opt/system/app/intel/2023.2/tbb/2021.10.0/lib/intel64/gcc4.8:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib;' export 'LIBRARY_PATH;
+CMPLR_ROOT=/opt/system/app/intel/2023.2/compiler/2023.2.4;' export 'CMPLR_ROOT;
+MANPATH=/opt/system/app/intel/2023.2/mpi/2021.12/man:/usr/share/man:/usr/local/gfarm/share/man:/opt/system/app/intel/2023.2/compiler/2023.2.4/documentation/en/man/common;' export 'MANPATH;
+_LMFILES_=/opt/system/app/env/intel/Compiler/intel/2023.2:/opt/system/app/env/intel/MPI/intelmpi/2023.2:/opt/system/app/env/PrgEnv/PrgEnvIntel/2023;' export '_LMFILES_;
+LOADEDMODULES=intel/2023.2:intelmpi/2023.2:PrgEnvIntel/2023;' export 'LOADEDMODULES;
+CMAKE_PREFIX_PATH=/opt/system/app/intel/2023.2/tbb/2021.10.0:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/IntelDPCPP;' export 'CMAKE_PREFIX_PATH;
+MODULES_LMCONFLICT=PrgEnvIntel/2023\&PrgEnvGCC\&PrgEnvNvidia\&PrgEnvIntel/2018\&PrgEnvIntel/2022\&PrgEnvIntel/2024\&PrgEnvIntel/2025;' export 'MODULES_LMCONFLICT;
+MODULES_LMALTNAME=intel/2023.2\&intel/default\&intel:intelmpi/2023.2\&intelmpi/default\&intelmpi:PrgEnvIntel/2023\&PrgEnvIntel/default\&PrgEnvIntel;' export 'MODULES_LMALTNAME;
+PKG_CONFIG_PATH=/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/pkgconfig;' export 'PKG_CONFIG_PATH;
+LIBRARY_PATH_modshare=/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/lib:1:/opt/system/app/intel/2023.2/tbb/2021.10.0/lib/intel64/gcc4.8:1:/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/intel64:1:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib:1:/opt/system/app/intel/2023.2/mpi/2021.12/lib/release:1:/opt/system/app/intel/2023.2/mpi/2021.12/lib:1;' export 'LIBRARY_PATH_modshare;
+MANPATH_modshare=/opt/system/app/intel/2023.2/mpi/2021.12/man:1:/usr/local/gfarm/share/man:1:/usr/share/man:1:/opt/system/app/intel/2023.2/compiler/2023.2.4/documentation/en/man/common:1;' export 'MANPATH_modshare;
+TBBROOT=/opt/system/app/intel/2023.2/tbb/2021.10.0;' export 'TBBROOT;
+NLSPATH_modshare=/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/compiler/lib/intel64_lin/locale/%l_%t/%N:1:/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/intel64/locale/%l_%t/%N:1;' export 'NLSPATH_modshare;
+MODULES_LMCONFLICT_modshare=PrgEnvIntel/2023\&PrgEnvGCC\&PrgEnvNvidia\&PrgEnvIntel/2018\&PrgEnvIntel/2022\&PrgEnvIntel/2024\&PrgEnvIntel/2025:1;' export 'MODULES_LMCONFLICT_modshare;
+MODULES_LMALTNAME_modshare=PrgEnvIntel/2023\&PrgEnvIntel/default\&PrgEnvIntel:1:intelmpi/2023.2\&intelmpi/default\&intelmpi:1:intel/2023.2\&intel/default\&intel:1;' export 'MODULES_LMALTNAME_modshare;
+PKG_CONFIG_PATH_modshare=/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/pkgconfig:1;' export 'PKG_CONFIG_PATH_modshare;
+MODULES_LMNOTUASKED=intel/2023.2:intelmpi/2023.2;' export 'MODULES_LMNOTUASKED;
+MKLROOT=/opt/system/app/intel/2023.2/mkl/2023.2.0;' export 'MKLROOT;
+MODULES_LMNOTUASKED_modshare=intelmpi/2023.2:1:intel/2023.2:1;' export 'MODULES_LMNOTUASKED_modshare;
+MODULES_LMPREREQ_modshare=PrgEnvIntel/2023\&intel/2023.2\&intelmpi/2023.2:1;' export 'MODULES_LMPREREQ_modshare;
+CPATH_modshare=/opt/system/app/intel/2023.2/mpi/2021.12/include:1:/opt/system/app/intel/2023.2/mkl/2023.2.0/include:1:/opt/system/app/intel/2023.2/tbb/2021.10.0/include:1:/opt/system/app/intel/2023.2/dpl/2022.2.0/linux/include:1;' export 'CPATH_modshare;
+LD_LIBRARY_PATH_modshare=/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/lib:1:/opt/system/app/intel/2023.2/tbb/2021.10.0/lib/intel64/gcc4.8:1:/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/intel64:1:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib:1:/opt/system/app/intel/2023.2/mpi/2021.12/lib/release:1:/opt/system/app/intel/2023.2/mpi/2021.12/lib:1:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib/x64:1:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/compiler/lib/intel64_lin:1;' export 'LD_LIBRARY_PATH_modshare;
+OCL_ICD_FILENAMES_modshare=/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib/x64/libintelocl.so:1;' export 'OCL_ICD_FILENAMES_modshare;
+NLSPATH=/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/intel64/locale/%l_%t/%N:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/compiler/lib/intel64_lin/locale/%l_%t/%N;' export 'NLSPATH;
+CLASSPATH=/opt/system/app/intel/2023.2/mpi/2021.12/lib/mpi.jar;' export 'CLASSPATH;
+DPL_ROOT=/opt/system/app/intel/2023.2/dpl/2022.2.0;' export 'DPL_ROOT;
+MODULEPATH=/opt/system/app/env/intel/oss:/opt/system/app/env/intel/isv:/opt/system/app/env/intel/MPI:/opt/system/app/env/intel/Compiler:/etc/scl/modulefiles:/opt/system/app/env/SubSys:/opt/system/app/env/PrgEnv;' export 'MODULEPATH;
+_LMFILES__modshare=/opt/system/app/env/intel/Compiler/intel/2023.2:1:/opt/system/app/env/intel/MPI/intelmpi/2023.2:1:/opt/system/app/env/PrgEnv/PrgEnvIntel/2023:1;' export '_LMFILES__modshare;
+LOADEDMODULES_modshare=PrgEnvIntel/2023:1:intelmpi/2023.2:1:intel/2023.2:1;' export 'LOADEDMODULES_modshare;
+CMAKE_PREFIX_PATH_modshare=/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/IntelDPCPP:1:/opt/system/app/intel/2023.2/tbb/2021.10.0:1;' export 'CMAKE_PREFIX_PATH_modshare;
+FI_PROVIDER_PATH=/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/lib/prov:/usr/lib64/libfabric;' export 'FI_PROVIDER_PATH;
+CLASSPATH_modshare=/opt/system/app/intel/2023.2/mpi/2021.12/lib/mpi.jar:1;' export 'CLASSPATH_modshare;
+MODULEPATH_modshare=/etc/scl/modulefiles:1:/opt/system/app/env/intel/oss:1:/opt/system/app/env/intel/isv:1:/opt/system/app/env/intel/MPI:1:/opt/system/app/env/SubSys:1:/opt/system/app/env/intel/Compiler:1:/opt/system/app/env/PrgEnv:1;' export 'MODULEPATH_modshare;
+PATH=/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/bin:/opt/system/app/intel/2023.2/mpi/2021.12/bin:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/bin/intel64:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/bin:/home/b/b39211/.local/bin:/home/b/b39211/bin:/usr/share/Modules/bin:/usr/local/gfarm/bin:/opt/system/dpc-tools/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin;' export 'PATH;
+FI_PROVIDER_PATH_modshare=/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/lib/prov:1:/usr/lib64/libfabric:1;' export 'FI_PROVIDER_PATH_modshare;
+PATH_modshare=/usr/bin:1:/home/b/b39211/.local/bin:1:/usr/local/bin:1:/usr/share/Modules/bin:1:/usr/local/gfarm/bin:1:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/bin:1:/opt/system/app/intel/2023.2/mpi/2021.12/bin:1:/opt/system/dpc-tools/bin:1:/home/b/b39211/bin:1:/usr/sbin:1:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/bin/intel64:1:/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/bin:1:/usr/local/sbin:1;' export 'PATH_modshare;
+test' '0;'
+++ MODULES_LMPREREQ='PrgEnvIntel/2023&intel/2023.2&intelmpi/2023.2'
+++ export MODULES_LMPREREQ
+++ CPATH=/opt/system/app/intel/2023.2/mpi/2021.12/include:/opt/system/app/intel/2023.2/dpl/2022.2.0/linux/include:/opt/system/app/intel/2023.2/mkl/2023.2.0/include:/opt/system/app/intel/2023.2/tbb/2021.10.0/include
+++ export CPATH
+++ LD_LIBRARY_PATH=/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/lib:/opt/system/app/intel/2023.2/mpi/2021.12/lib/release:/opt/system/app/intel/2023.2/mpi/2021.12/lib:/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/intel64:/opt/system/app/intel/2023.2/tbb/2021.10.0/lib/intel64/gcc4.8:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib/x64:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/compiler/lib/intel64_lin
+++ export LD_LIBRARY_PATH
+++ OCL_ICD_FILENAMES=/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib/x64/libintelocl.so
+++ export OCL_ICD_FILENAMES
+++ I_MPI_ROOT=/opt/system/app/intel/2023.2/mpi/2021.12
+++ export I_MPI_ROOT
+++ LIBRARY_PATH=/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/lib:/opt/system/app/intel/2023.2/mpi/2021.12/lib/release:/opt/system/app/intel/2023.2/mpi/2021.12/lib:/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/intel64:/opt/system/app/intel/2023.2/tbb/2021.10.0/lib/intel64/gcc4.8:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib
+++ export LIBRARY_PATH
+++ CMPLR_ROOT=/opt/system/app/intel/2023.2/compiler/2023.2.4
+++ export CMPLR_ROOT
+++ MANPATH=/opt/system/app/intel/2023.2/mpi/2021.12/man:/usr/share/man:/usr/local/gfarm/share/man:/opt/system/app/intel/2023.2/compiler/2023.2.4/documentation/en/man/common
+++ export MANPATH
+++ _LMFILES_=/opt/system/app/env/intel/Compiler/intel/2023.2:/opt/system/app/env/intel/MPI/intelmpi/2023.2:/opt/system/app/env/PrgEnv/PrgEnvIntel/2023
+++ export _LMFILES_
+++ LOADEDMODULES=intel/2023.2:intelmpi/2023.2:PrgEnvIntel/2023
+++ export LOADEDMODULES
+++ CMAKE_PREFIX_PATH=/opt/system/app/intel/2023.2/tbb/2021.10.0:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/IntelDPCPP
+++ export CMAKE_PREFIX_PATH
+++ MODULES_LMCONFLICT='PrgEnvIntel/2023&PrgEnvGCC&PrgEnvNvidia&PrgEnvIntel/2018&PrgEnvIntel/2022&PrgEnvIntel/2024&PrgEnvIntel/2025'
+++ export MODULES_LMCONFLICT
+++ MODULES_LMALTNAME='intel/2023.2&intel/default&intel:intelmpi/2023.2&intelmpi/default&intelmpi:PrgEnvIntel/2023&PrgEnvIntel/default&PrgEnvIntel'
+++ export MODULES_LMALTNAME
+++ PKG_CONFIG_PATH=/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/pkgconfig
+++ export PKG_CONFIG_PATH
+++ LIBRARY_PATH_modshare=/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/lib:1:/opt/system/app/intel/2023.2/tbb/2021.10.0/lib/intel64/gcc4.8:1:/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/intel64:1:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib:1:/opt/system/app/intel/2023.2/mpi/2021.12/lib/release:1:/opt/system/app/intel/2023.2/mpi/2021.12/lib:1
+++ export LIBRARY_PATH_modshare
+++ MANPATH_modshare=/opt/system/app/intel/2023.2/mpi/2021.12/man:1:/usr/local/gfarm/share/man:1:/usr/share/man:1:/opt/system/app/intel/2023.2/compiler/2023.2.4/documentation/en/man/common:1
+++ export MANPATH_modshare
+++ TBBROOT=/opt/system/app/intel/2023.2/tbb/2021.10.0
+++ export TBBROOT
+++ NLSPATH_modshare=/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/compiler/lib/intel64_lin/locale/%l_%t/%N:1:/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/intel64/locale/%l_%t/%N:1
+++ export NLSPATH_modshare
+++ MODULES_LMCONFLICT_modshare='PrgEnvIntel/2023&PrgEnvGCC&PrgEnvNvidia&PrgEnvIntel/2018&PrgEnvIntel/2022&PrgEnvIntel/2024&PrgEnvIntel/2025:1'
+++ export MODULES_LMCONFLICT_modshare
+++ MODULES_LMALTNAME_modshare='PrgEnvIntel/2023&PrgEnvIntel/default&PrgEnvIntel:1:intelmpi/2023.2&intelmpi/default&intelmpi:1:intel/2023.2&intel/default&intel:1'
+++ export MODULES_LMALTNAME_modshare
+++ PKG_CONFIG_PATH_modshare=/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/pkgconfig:1
+++ export PKG_CONFIG_PATH_modshare
+++ MODULES_LMNOTUASKED=intel/2023.2:intelmpi/2023.2
+++ export MODULES_LMNOTUASKED
+++ MKLROOT=/opt/system/app/intel/2023.2/mkl/2023.2.0
+++ export MKLROOT
+++ MODULES_LMNOTUASKED_modshare=intelmpi/2023.2:1:intel/2023.2:1
+++ export MODULES_LMNOTUASKED_modshare
+++ MODULES_LMPREREQ_modshare='PrgEnvIntel/2023&intel/2023.2&intelmpi/2023.2:1'
+++ export MODULES_LMPREREQ_modshare
+++ CPATH_modshare=/opt/system/app/intel/2023.2/mpi/2021.12/include:1:/opt/system/app/intel/2023.2/mkl/2023.2.0/include:1:/opt/system/app/intel/2023.2/tbb/2021.10.0/include:1:/opt/system/app/intel/2023.2/dpl/2022.2.0/linux/include:1
+++ export CPATH_modshare
+++ LD_LIBRARY_PATH_modshare=/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/lib:1:/opt/system/app/intel/2023.2/tbb/2021.10.0/lib/intel64/gcc4.8:1:/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/intel64:1:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib:1:/opt/system/app/intel/2023.2/mpi/2021.12/lib/release:1:/opt/system/app/intel/2023.2/mpi/2021.12/lib:1:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib/x64:1:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/compiler/lib/intel64_lin:1
+++ export LD_LIBRARY_PATH_modshare
+++ OCL_ICD_FILENAMES_modshare=/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib/x64/libintelocl.so:1
+++ export OCL_ICD_FILENAMES_modshare
+++ NLSPATH=/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/intel64/locale/%l_%t/%N:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/compiler/lib/intel64_lin/locale/%l_%t/%N
+++ export NLSPATH
+++ CLASSPATH=/opt/system/app/intel/2023.2/mpi/2021.12/lib/mpi.jar
+++ export CLASSPATH
+++ DPL_ROOT=/opt/system/app/intel/2023.2/dpl/2022.2.0
+++ export DPL_ROOT
+++ MODULEPATH=/opt/system/app/env/intel/oss:/opt/system/app/env/intel/isv:/opt/system/app/env/intel/MPI:/opt/system/app/env/intel/Compiler:/etc/scl/modulefiles:/opt/system/app/env/SubSys:/opt/system/app/env/PrgEnv
+++ export MODULEPATH
+++ _LMFILES__modshare=/opt/system/app/env/intel/Compiler/intel/2023.2:1:/opt/system/app/env/intel/MPI/intelmpi/2023.2:1:/opt/system/app/env/PrgEnv/PrgEnvIntel/2023:1
+++ export _LMFILES__modshare
+++ LOADEDMODULES_modshare=PrgEnvIntel/2023:1:intelmpi/2023.2:1:intel/2023.2:1
+++ export LOADEDMODULES_modshare
+++ CMAKE_PREFIX_PATH_modshare=/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/IntelDPCPP:1:/opt/system/app/intel/2023.2/tbb/2021.10.0:1
+++ export CMAKE_PREFIX_PATH_modshare
+++ FI_PROVIDER_PATH=/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/lib/prov:/usr/lib64/libfabric
+++ export FI_PROVIDER_PATH
+++ CLASSPATH_modshare=/opt/system/app/intel/2023.2/mpi/2021.12/lib/mpi.jar:1
+++ export CLASSPATH_modshare
+++ MODULEPATH_modshare=/etc/scl/modulefiles:1:/opt/system/app/env/intel/oss:1:/opt/system/app/env/intel/isv:1:/opt/system/app/env/intel/MPI:1:/opt/system/app/env/SubSys:1:/opt/system/app/env/intel/Compiler:1:/opt/system/app/env/PrgEnv:1
+++ export MODULEPATH_modshare
+++ PATH=/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/bin:/opt/system/app/intel/2023.2/mpi/2021.12/bin:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/bin/intel64:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/bin:/home/b/b39211/.local/bin:/home/b/b39211/bin:/usr/share/Modules/bin:/usr/local/gfarm/bin:/opt/system/dpc-tools/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+++ export PATH
+++ FI_PROVIDER_PATH_modshare=/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/lib/prov:1:/usr/lib64/libfabric:1
+++ export FI_PROVIDER_PATH_modshare
+++ PATH_modshare=/usr/bin:1:/home/b/b39211/.local/bin:1:/usr/local/bin:1:/usr/share/Modules/bin:1:/usr/local/gfarm/bin:1:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/bin:1:/opt/system/app/intel/2023.2/mpi/2021.12/bin:1:/opt/system/dpc-tools/bin:1:/home/b/b39211/bin:1:/usr/sbin:1:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/bin/intel64:1:/opt/system/app/intel/2023.2/mpi/2021.12/libfabric/bin:1:/usr/local/sbin:1
+++ export PATH_modshare
+++ test 0
++ _mlstatus=0
++ '[' -n x ']'
++ IFS=' 	
+'
++ unset _mlre _mlv _mlrv _mlIFS
++ '[' -n '' ']'
++ unset _mlshdbg
++ return 0
+LD_LIBRARY_PATH = /opt/system/app/intel/2023.2/mpi/2021.12/libfabric/lib:/opt/system/app/intel/2023.2/mpi/2021.12/lib/release:/opt/system/app/intel/2023.2/mpi/2021.12/lib:/opt/system/app/intel/2023.2/mkl/2023.2.0/lib/intel64:/opt/system/app/intel/2023.2/tbb/2021.10.0/lib/intel64/gcc4.8:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/lib/x64:/opt/system/app/intel/2023.2/compiler/2023.2.4/linux/compiler/lib/intel64_lin
+Python path:
+/home/b/b39211/pyenv/bin/python3
+Python 3.6.8
+NPROC = 8
+Start Python job
+Finished

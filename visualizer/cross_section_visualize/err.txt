@@ -1,0 +1,6 @@
+Unloading PrgEnvIntel/2023
+  WARNING: Did not unuse /opt/system/app/env/intel/Compiler
+  WARNING: Did not unuse /opt/system/app/env/intel/MPI
+/opt/rh/gcc-toolset-12/root/usr/lib/gcc/x86_64-redhat-linux/12/../../../../bin/ld: /lib/../lib64/crt1.o: in function `_start':
+(.text+0x24): undefined reference to `main'
+icpx: error: linker command failed with exit code 1 (use -v to see invocation)

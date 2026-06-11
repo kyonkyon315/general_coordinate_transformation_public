@@ -1,0 +1,7 @@
+[
+  {
+    "directory": "/home/Documents/general_coordinate_transformation",
+    "command": "mpic++ -std=c++20 -fopenmp -I/usr/lib/x86_64-linux-gnu/openmpi/include -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -c main.cpp",
+    "file": "main.cpp"
+  }
+]
