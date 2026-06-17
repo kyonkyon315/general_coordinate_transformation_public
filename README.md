@@ -1,11 +1,4 @@
 
-
-https://github.com/user-attachments/assets/10cae195-5be7-45f1-8c73-dc01b8b8f759
-
-
-
-https://github.com/user-attachments/assets/bba45843-9e53-417a-95e7-478835d1d8fd
-
 # Generic-Vlasov-Solver
 
 任意次元・任意座標系においてプラズマの運動論的（Kinetic）シミュレーションを行うための、汎用かつ高パフォーマンスなVlasovソルバーです。
