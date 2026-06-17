@@ -1,3 +1,11 @@
+
+
+https://github.com/user-attachments/assets/10cae195-5be7-45f1-8c73-dc01b8b8f759
+
+
+
+https://github.com/user-attachments/assets/bba45843-9e53-417a-95e7-478835d1d8fd
+
 # Generic-Vlasov-Solver
 
 任意次元・任意座標系においてプラズマの運動論的（Kinetic）シミュレーションを行うための、汎用かつ高パフォーマンスなVlasovソルバーです。
@@ -47,7 +55,7 @@ $$\frac{\partial f}{\partial t} + \mathbf{v} \cdot \nabla_x f + \frac{q}{m} (\ma
    - 1D1V 
    - プラズマにおける2流体不安定性（Two-stream instability）の成長と、位相空間（ $x-v_x$ ）における非線形渦（フェーズスペース・ホール）形成のシミュレーション。
 <video 
-  src="https://github.com/user-attachments/assets/d94219d7-b86e-4046-ae05-ade915518198" 
+  src="https://github.com/user-attachments/assets/a05559ea-120e-4537-91ee-18cb6a120e17"
   style="width: 20% !important; display: block !important;" 
   autoplay 
   loop 
