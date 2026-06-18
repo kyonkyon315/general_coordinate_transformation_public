@@ -1032,10 +1032,42 @@ v_r \sin(v_\theta)\cos(v_\phi)
 A corresponding implementation is:
 
 ```cpp
+// 例：計算空間 (vr, vt, vp) から 物理空間 vx への写像 (vx = vr * sin(vt) * cos(vp))
+
 class Physic_vx
 {
-    ...
+    NdTensorWithGhostCell<Value,Axis_vr,Axis_vt,Axis_vp> table;
+    const CalcVr_2_Vr calc_vr_2_vr;
+    const CalcVt_2_Vt calc_vt_2_vt;
+    const CalcVp_2_Vp calc_vp_2_vp;
+
+public:
+    Value honestly_translate(const int calc_vr,const int calc_vt,const int calc_vp)const{
+        // v_x = vr * cos(vt)
+        const Value vr = calc_vr_2_vr.at(calc_vr);
+        const Value vt = calc_vt_2_vt.at(calc_vt);
+        const Value vp = calc_vp_2_vp.at(calc_vp);
+        return vr * sin(vt)*cos(vp);
+    }
+
+    Physic_vx(const int my_world_rank):
+        table(my_world_rank),
+        calc_vr_2_vr(my_world_rank),
+        calc_vt_2_vt(my_world_rank),
+        calc_vp_2_vp(my_world_rank)
+    {
+        table.set_value_sliced<FullSliceGhost_r,FullSliceGhost_t,FullSliceGhost_p>(
+            [this](const int calc_vr,const int calc_vt,const int calc_vp){
+                return honestly_translate(calc_vr, calc_vt,calc_vp);
+            }
+        );
+    }
+    Value at(const int calc_z,const int calc_vr,const int calc_vt,const int calc_vp)const{
+        return table.at(calc_vr,calc_vt,calc_vp);    
+    }
+    static const int label = 1;
 };
+
 ```
 
 (identical to the source code example)
@@ -1152,9 +1184,9 @@ public:
 
 Since the values are precomputed and accessed through a lookup table (LUT), improved performance can be expected. Implement the remaining tensor elements in the same manner.
 
-## 3.2.2 Instantiation of the Lightweight Tensor
+## 3.2.2 Instantiation of the Metric Tensor
 
-Instantiate the lightweight tensor inside `main()` as follows:
+Instantiate the Metric tensor inside `main()` as follows:
 
 ```cpp
 
