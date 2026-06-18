@@ -1,5 +1,5 @@
 # Generic-Vlasov-Solver
-## Click [here](https://github.com/kyonkyon315/general_coordinate_transformation_public/edit/main/README_english.md) for the English version.
+## Click [here](https://github.com/kyonkyon315/general_coordinate_transformation_public/blob/main/README_english.md) for the English version.
 
 任意次元・任意座標系においてプラズマの運動論的（Kinetic）シミュレーションを行うための、汎用かつ高パフォーマンスなVlasovソルバーです。
 > **【お知らせ】**
