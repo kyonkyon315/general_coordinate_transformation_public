@@ -635,30 +635,6 @@ This design enables simulations in:
 
 without modifying the underlying numerical infrastructure.
 
----
-
-# Usage Guide
-
-The remainder of this document explains how to configure and run simulations using the framework.
-
-As a concrete example, we use:
-
-```text
-main/whistler_kappa_super.cpp
-```
-
-which solves a Whistler-wave problem using cylindrical velocity coordinates and MPI parallelization.
-
-The following sections describe:
-
-1. Axis definitions
-2. Tensor definitions
-3. Coordinate mappings
-4. Jacobian implementation
-5. Boundary conditions
-6. Advection terms
-7. Solver construction
-8. Time integration
 # Usage Guide
 
 This framework is designed to allow users to define arbitrary dimensions and coordinate systems at compile time. By completely separating the computational space (uniform grids used by the numerical solver) from the physical space (actual coordinates used in the physical model), complex coordinate systems can be implemented simply by providing the appropriate coordinate transformations and Jacobian components.
@@ -1112,3 +1088,229 @@ Physic_vz
 ```
 
 using the appropriate coordinate transformations.
+以下は、アップロードされた箇所の英訳です。
+
+---
+
+# 3.2 Implementation of Lightweight Tensors Between Computational and Physical Spaces
+
+A lightweight tensor can be written as:
+
+```math
+\frac{\partial(z_c,v_r,v_\theta,v_\phi)}
+     {\partial(z,v_x,v_y,v_z)}
+=
+\begin{pmatrix}
+\frac{\partial z_c}{\partial z} & 0 & 0 & 0 \\
+0 & \frac{\partial v_r}{\partial v_x} & \frac{\partial v_r}{\partial v_y} & \frac{\partial v_r}{\partial v_z} \\
+0 & \frac{\partial v_\theta}{\partial v_x} & \frac{\partial v_\theta}{\partial v_y} & \frac{\partial v_\theta}{\partial v_z} \\
+0 & \frac{\partial v_\phi}{\partial v_x} & \frac{\partial v_\phi}{\partial v_y} & 0
+\end{pmatrix}
+```
+
+We now implement classes that represent each element of this matrix.
+
+## 3.2.1 Implementation of Lightweight Tensor Elements
+
+As an example, the following class represents the tensor element
+
+```math
+\frac{\partial v_r}{\partial v_x}.
+```
+
+The member function `.at()` must return the corresponding value. Its arguments are the four local grid indices in computational space. Adjust the number of arguments according to the dimensionality of your problem.
+
+```cpp
+// code omitted
+```
+
+Since the values are precomputed and accessed through a lookup table (LUT), improved performance can be expected. Implement the remaining tensor elements in the same manner.
+
+## 3.2.2 Instantiation of the Lightweight Tensor
+
+Instantiate the lightweight tensor inside `main()` as follows:
+
+```cpp
+// code omitted
+```
+
+For entries whose derivative is zero, use `independent`.
+
+---
+
+# 4. Setting Boundary Conditions
+
+Boundary conditions define how ghost cells are updated at the boundaries of the computational domain.
+
+In this framework, MPI communication and ghost-cell updates are automatically handled once the index mapping (i.e., which cell is copied into each ghost cell) is specified.
+
+Define `left` and `right` template functions inside the boundary-condition class, and specify the source coordinates using global indices.
+
+## 4.1 Example: Periodic Boundary Condition (z-axis)
+
+This is the simplest example of a periodic boundary condition. Values are copied from the opposite side of the domain.
+
+```cpp
+// code omitted
+```
+
+### Explanation
+
+* `left()` returns the source index used to update the left ghost cells.
+* `right()` returns the source index used to update the right ghost cells.
+* Along the z-direction, data are copied from the opposite end of the global domain.
+
+## 4.2 Complex Boundary Conditions Such as Polar Coordinates (Reference)
+
+The velocity space in `whistler_kappa_super.cpp` is defined in polar coordinates
+
+```math
+(v_r, v_\theta, v_\phi).
+```
+
+For example, when attempting to access a region with
+
+```math
+v_r < 0,
+```
+
+the coordinate must pass through the origin and refer to data at the opposite angular position:
+
+```math
+v_\theta \rightarrow \pi - v_\theta,
+\qquad
+v_\phi \rightarrow v_\phi + \pi.
+```
+
+Within this framework, such complex spatial topologies can be described concisely using conditional index mappings. See `BoundaryCondition_vr` and related source files for details.
+
+## 4.3 Packing Boundary Conditions
+
+Combine the boundary-condition classes for all axes into a single pack:
+
+```cpp
+using BoundaryCondition = Pack<
+    BoundaryCondition_z_,
+    BoundaryCondition_vr,
+    BoundaryCondition_vt,
+    BoundaryCondition_vp
+>;
+```
+
+---
+
+# 5. Definition of Advection Terms (Fluxes)
+
+Define the advection terms appearing in each part of the Vlasov equation.
+
+For
+
+```math
+\frac{\partial f}{\partial t}
++
+\nabla \cdot (\mathbf{F}f)
+=
+0,
+```
+
+the quantity corresponding to
+
+```math
+\mathbf{F}
+```
+
+must be specified.
+
+## 5.1 Example: Velocity-Space Advection Due to the Lorentz Force
+
+The following example implements advection in the
+
+```math
+v_x
+```
+
+direction,
+
+```math
+-\frac{e}{m}(\mathbf{E}+\mathbf{v}\times\mathbf{B})_x.
+```
+
+Because a Yee grid is used, the electric and magnetic fields are staggered by half a grid spacing and therefore require interpolation.
+
+```cpp
+// code omitted
+```
+
+### Explanation
+
+* At the velocity-space boundary, the flux is forced to zero so that particles do not leave the computational domain.
+* Electromagnetic fields are interpolated according to the Yee-grid arrangement.
+* Physical velocities are obtained from the corresponding coordinate-conversion classes.
+* The Lorentz force term is evaluated as
+
+```math
+-(E_x + v_yB_z - v_zB_y),
+```
+
+where the minus sign accounts for the negative charge of electrons.
+
+After defining all advection terms, combine them into a pack:
+
+```cpp
+const Pack advections(
+    flux_z_,
+    flux_vx,
+    flux_vy,
+    flux_vz
+);
+```
+
+---
+
+# 6. Numerical Scheme and Overall Construction
+
+Select a high-order interpolation scheme for flux calculations and construct the Vlasov solver by passing all previously defined components (distribution function, advection terms, Jacobian, numerical scheme, etc.) to `AdvectionEquation`.
+
+```cpp
+// code omitted
+```
+
+The example above uses the third-order scheme proposed by Umeda (2008).
+
+A `BoundaryManager` instance is also created to manage boundary-condition updates and MPI synchronization.
+
+---
+
+# 7. Main Loop and Time Integration
+
+Time advancement is performed using **Strang splitting**.
+
+By solving the advection equation independently along each axis, the multidimensional problem is reduced to a sequence of one-dimensional problems.
+
+After each call to
+
+```cpp
+equation.solve<Axis_**>(dt);
+```
+
+you must immediately call
+
+```cpp
+boundary_manager.apply<Axis_**>();
+```
+
+to synchronize ghost cells through MPI communication.
+
+```cpp
+// code omitted
+```
+
+### Time-Stepping Procedure
+
+1. Advance the velocity-space directions by a half step (`dt/2`).
+2. Clear the current and advance the physical-space direction by one full step (`dt`).
+3. Compute the current and advance Maxwell's equations using the FDTD solver.
+4. Advance the remaining half step in velocity space.
+5. Output logs and save data as needed.
+
+With these steps completed, the framework is ready to perform a general Vlasov simulation in an arbitrary coordinate system. Adjust the grid resolution, initial conditions (e.g., `init_dist_and_poisson`), and other physical parameters according to the problem of interest.
