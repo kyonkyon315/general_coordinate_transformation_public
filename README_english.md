@@ -1,12 +1,27 @@
 # Generic-Vlasov-Solver
 
-A generic, high-performance Vlasov solver for kinetic plasma simulations in arbitrary dimensions and coordinate systems.
-
 > **Notice**
 >
 > This repository is a public extract of a larger private development repository used for active development. Commit history and certain internal resources have been intentionally omitted from this public release.
 
----
+
+A high-performance C++17 framework for
+arbitrary-dimensional Vlasov-Maxwell simulations.
+
+## Highlights
+
+- Compile-time dimensionality
+- Arbitrary coordinate systems
+- Automatic MPI topology generation
+- Ghost-cell communication
+- General tensor framework
+- Verified against Langmuir, Bernstein and Whistler waves
+
+## Scale
+
+- Tested on 2048 MPI ranks
+- 1D3V(4 dimensional) simulations
+- Cylindrical velocity coordinates
 
 # Overview
 
