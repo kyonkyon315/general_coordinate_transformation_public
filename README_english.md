@@ -128,12 +128,7 @@ In Cartesian velocity coordinates, repeated interpolation during this rotation i
 
 This issue is illustrated below:
 
-```text
-[Original README Figure:
-Distribution function degradation caused by numerical diffusion]
-```
-
----
+<img width="661" height="255" alt="image" src="https://github.com/user-attachments/assets/abc42001-e7b7-4f3a-93b8-75afc9c6605b" />
 
 ## Proposed Solution: Polar Velocity Coordinates
 
@@ -162,14 +157,9 @@ Consequently:
 
 The improvement is shown in the original README:
 
-```text
-[Original README Figure:
-Distribution function preserved using polar velocity coordinates]
-```
+<img width="655" height="272" alt="image" src="https://github.com/user-attachments/assets/54df8120-f7ef-42a7-a724-66b3058d39c5" />
 
 Even after long simulation times, the shape of the distribution function remains nearly unchanged.
-
----
 
 # What is the Vlasov Equation?
 
