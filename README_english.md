@@ -1088,11 +1088,7 @@ Physic_vz
 ```
 
 using the appropriate coordinate transformations.
-以下は、アップロードされた箇所の英訳です。
-
----
-
-# 3.2 Implementation of Lightweight Tensors Between Computational and Physical Spaces
+# 3.2 Implementation of Metric Tensors Between Computational and Physical Spaces
 
 A lightweight tensor can be written as:
 
@@ -1110,7 +1106,7 @@ A lightweight tensor can be written as:
 
 We now implement classes that represent each element of this matrix.
 
-## 3.2.1 Implementation of Lightweight Tensor Elements
+## 3.2.1 Implementation of Metric Tensor Elements
 
 As an example, the following class represents the tensor element
 
@@ -1121,7 +1117,37 @@ As an example, the following class represents the tensor element
 The member function `.at()` must return the corresponding value. Its arguments are the four local grid indices in computational space. Adjust the number of arguments according to the dimensionality of your problem.
 
 ```cpp
-// code omitted
+
+
+class Vr_diff_vx
+{
+private:
+    NdTensorWithGhostCell<Value,Axis_vt,Axis_vp> table;
+    const CalcVt_2_Vt calc_vt_2_vt;
+    const CalcVp_2_Vp calc_vp_2_vp;
+public:
+    Value honestly_translate(const int calc_vt,const int calc_vp){
+        // sinθ cosφ
+        const Value vt = calc_vt_2_vt.at(calc_vt);
+        const Value vp = calc_vp_2_vp.at(calc_vp);
+        return sin(vt) * cos(vp)/(double)Global::grid_size_vr;
+    }
+    Vr_diff_vx(const int my_world_rank):
+        table(my_world_rank),
+        calc_vt_2_vt(my_world_rank),
+        calc_vp_2_vp(my_world_rank)
+    {
+        table.set_value_sliced<FullSliceGhost_t,FullSliceGhost_p>(
+            [this](const int calc_vt,const int calc_vp){
+                return honestly_translate(calc_vt, calc_vp);
+            }
+        );
+    }
+    
+    Value at(const int calc_z,const int calc_vr,const int calc_vt,const int calc_vp)const{
+        return table.at(calc_vt,calc_vp);
+    }
+};
 ```
 
 Since the values are precomputed and accessed through a lookup table (LUT), improved performance can be expected. Implement the remaining tensor elements in the same manner.
@@ -1131,7 +1157,24 @@ Since the values are precomputed and accessed through a lookup table (LUT), impr
 Instantiate the lightweight tensor inside `main()` as follows:
 
 ```cpp
-// code omitted
+
+const Independent independent;
+const Z__diff_z_ z__diff_z_;
+const Vr_diff_vx vr_diff_vx(world_rank);
+const Vr_diff_vy vr_diff_vy(world_rank);
+const Vr_diff_vz vr_diff_vz(world_rank);
+const Vt_diff_vx vt_diff_vx(world_rank);
+const Vt_diff_vy vt_diff_vy(world_rank);
+const Vt_diff_vz vt_diff_vz(world_rank);
+const Vp_diff_vx vp_diff_vx(world_rank);
+const Vp_diff_vy vp_diff_vy(world_rank);
+
+const Jacobian jacobian(
+   z__diff_z_ , independent, independent, independent, 
+   independent, vr_diff_vx , vr_diff_vy , vr_diff_vz ,
+   independent, vt_diff_vx , vt_diff_vy , vt_diff_vz ,
+   independent, vp_diff_vx , vp_diff_vy , independent
+);
 ```
 
 For entries whose derivative is zero, use `independent`.
@@ -1151,7 +1194,41 @@ Define `left` and `right` template functions inside the boundary-condition class
 This is the simplest example of a periodic boundary condition. Values are copied from the opposite side of the domain.
 
 ```cpp
-// code omitted
+
+class BoundaryCondition_z_
+{
+public:
+    static const int label = 0;
+
+    // 吸収境界など、単なる値のコピー以外の特殊な処理を行う場合はtrueにしますが、通常はfalseです。
+    static constexpr bool not_only_comm = false;
+
+    // 左側のゴーストセルを更新するためのコピー元インデックスを返す
+    template<int Index>
+    static int left(const int calc_z,const int calc_vr,const int calc_vt,const int calc_vp){
+        if constexpr(Index == 0){
+            // z軸方向は右端（+ num_global_grid）のインデックスを参照
+            return calc_z + Axis_z_::num_global_grid;
+        }
+        else if constexpr(Index == 1){ return calc_vr; }
+        else if constexpr(Index == 2){ return calc_vt; }
+        else if constexpr(Index == 3){ return calc_vp; }
+        else return 0;
+    }
+
+    // 右側のゴーストセルを更新するためのコピー元インデックスを返す
+    template<int Index>
+    static int right(const int calc_z,const int calc_vr,const int calc_vt,const int calc_vp){
+        if constexpr(Index == 0){
+            // z軸方向は左端（- num_global_grid）のインデックスを参照
+            return calc_z - Axis_z_::num_global_grid;
+        }
+        else if constexpr(Index == 1){ return calc_vr; }
+        else if constexpr(Index == 2){ return calc_vt; }
+        else if constexpr(Index == 3){ return calc_vp; }
+        else return 0;
+    }
+};
 ```
 
 ### Explanation
@@ -1238,7 +1315,39 @@ direction,
 Because a Yee grid is used, the electric and magnetic fields are staggered by half a grid spacing and therefore require interpolation.
 
 ```cpp
-// code omitted
+
+class Fvx {
+private:
+    const bool _is_velo_right_edge;
+    const ElectricField& e_field;
+    const MagneticField& m_field;
+    const Physic_vz& physic_vz;
+    const Physic_vy& physic_vy;
+
+public:
+    Fvx(const int my_world_rank, const ElectricField& e_field, const MagneticField& m_field,
+        const Physic_vz& physic_vz, const Physic_vy& physic_vy) : /* ...初期化... */ {}
+
+    Value at(const int calc_z,const int calc_vr,const int calc_vt,const int calc_vp) const {
+        // 速度空間の境界で粒子が計算領域外に逃げないよう、フラックスを0にする処理
+        if(_is_velo_right_edge && calc_vr == Axis_vr::num_grid){
+            return - at(calc_z, Axis_vr::num_grid-1, calc_vt, calc_vp);
+        }
+        else{
+            // Yee格子に基づき、必要な位置の電磁場を取得（補間）
+            const Value Ex = e_field.at(calc_z).x;
+            const Value By = (m_field.at(calc_z-1).y + m_field.at(calc_z).y)/2.;
+            const Value Bz = m_field.at(calc_z).z;
+
+            // 物理速度を取得
+            const Value vz = physic_vz.at(calc_z, calc_vr, calc_vt, calc_vp);
+            const Value vy = physic_vy.at(calc_z, calc_vr, calc_vt, calc_vp);
+
+            // ローレンツ力 -(E + v×B)_x を計算（電子電荷が負のため - を付与）
+            return - (Ex + vy*Bz - vz*By); 
+        }
+    }
+};
 ```
 
 ### Explanation
@@ -1272,7 +1381,17 @@ const Pack advections(
 Select a high-order interpolation scheme for flux calculations and construct the Vlasov solver by passing all previously defined components (distribution function, advection terms, Jacobian, numerical scheme, etc.) to `AdvectionEquation`.
 
 ```cpp
-// code omitted
+
+// 補間スキームの選択（例: Umeda 2008の3次精度スキーム）
+#include "../schemes/umeda_2008.h"
+using Scheme = Umeda2008;
+namespace Global{ Scheme scheme; }
+
+// AdvectionEquation (Vlasovソルバー) のインスタンス化
+AdvectionEquation equation(world_rank, dist_function, advections, jacobian, Global::scheme, current);
+
+// 境界条件管理マネージャーのインスタンス化
+BoundaryManager boundary_manager(world_rank, world_size, dist_function, boundary_condition, axis_z_, axis_vr, axis_vt, axis_vp);
 ```
 
 The example above uses the third-order scheme proposed by Umeda (2008).
@@ -1302,7 +1421,29 @@ boundary_manager.apply<Axis_**>();
 to synchronize ghost cells through MPI communication.
 
 ```cpp
-// code omitted
+
+for(int i=0; i<num_steps; i++){
+    // 1. 速度空間の半ステップ進行 (dt/2)
+    equation.solve<Axis_vr>(dt/2.); boundary_manager.apply<Axis_vr>();
+    equation.solve<Axis_vt>(dt/2.); boundary_manager.apply<Axis_vt>();
+    equation.solve<Axis_vp>(dt/2.); boundary_manager.apply<Axis_vp>();
+
+    // 2. 電流のクリアと、実空間の1ステップ進行 (dt)
+    current.clear();
+    equation.solve<Axis_z_>(dt);    
+    boundary_manager.apply<Axis_z_>();
+    
+    // 3. 電流の計算とMaxwell方程式 (FDTD) の進行
+    current_calculator.calc();
+    current.compute_global_current();
+    // (FDTDソルバーによる電磁場の時間発展... 詳細はソース参照)
+
+    // 4. 速度空間の残り半ステップ進行 (dt/2)
+    equation.solve<Axis_vp>(dt/2.); boundary_manager.apply<Axis_vp>();
+    equation.solve<Axis_vt>(dt/2.); boundary_manager.apply<Axis_vt>();
+    equation.solve<Axis_vr>(dt/2.); boundary_manager.apply<Axis_vr>();
+
+    // ※ 適宜、ログの書き出しやデータ保存を行う
 ```
 
 ### Time-Stepping Procedure
