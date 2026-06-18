@@ -36,14 +36,14 @@
 
 Vlasov方程式は、プラズマ中の多数の荷電粒子（電子やイオン）の運動を、「個々の粒子」として追跡するのではなく、「分布関数」の統計的な変化として記述する方程式です。
 ### 1. 基本となる考え方：
-位相空間における粒子の「密度」を定義します。これを分布関数 $f(\mathbf{x}, \mathbf{v}, t)$ と呼びます。 $f(\mathbf{x}, \mathbf{v}, t) d\mathbf{x}d\mathbf{v}$ は、時刻 $t$ において、位置 $\mathbf{x}$ 周りの微小体積 $d\mathbf{x}$、速度 $\mathbf{v}$ 周りの微小体積 $d\mathbf{v}$ に存在する粒子の数を表します。
+位相空間における粒子の「密度」を定義します。これを分布関数 $f(\mathbf{x}, \mathbf{v}, t)$ と呼びます。 $f(\mathbf{x}, \mathbf{v}, t) d\mathbf{x}d\mathbf{v}$ は、時刻 $t$ において、位置 $\mathbf{x}$ 周りの微小体積 $d\mathbf{x}$ 、速度 $\mathbf{v}$ 周りの微小体積 $d\mathbf{v}$ に存在する粒子の数を表します。
 
 ### 2. 方程式の形
 外力（電磁場）が存在する環境下での無衝突プラズマのVlasov方程式は、以下の形で表されます：
 
 $$\frac{\partial f}{\partial t} + \mathbf{v} \cdot \nabla_x f + \frac{q}{m} (\mathbf{E} + \mathbf{v} \times \mathbf{B}) \cdot \nabla_v f = 0$$
 
-ここで、$f$, $q$, $m$, $E$, $B$, $\mathbf{v}$, $\nabla_x$, $\nabla_v$ はそれぞれ、電子分布関数、素電荷、電子質量、電場、磁場、速度($v_x, v_y, v_z$)、実空間勾配($\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z}$)、速度空間勾配($\frac{\partial}{\partial v_x}, \frac{\partial}{\partial v_y}, \frac{\partial}{\partial v_z}$)です。
+ここで、 $f$, $q$, $m$, $E$, $B$, $\mathbf{v}$, $\nabla_x$, $\nabla_v$ はそれぞれ、電子分布関数、素電荷、電子質量、電場、磁場、速度( $v_x, v_y, v_z$ )、実空間勾配($\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z}$)、速度空間勾配($\frac{\partial}{\partial v_x}, \frac{\partial}{\partial v_y}, \frac{\partial}{\partial v_z}$)です。
 この式の意味を紐解くと、以下の3つの項から成り立っています：
 
 - 時間変化項 ($\frac{\partial f}{\partial t}$): ある観測点における分布関数の時間変化。
@@ -189,7 +189,7 @@ public:
 ```
 z座標は等間隔に区切るので、グリッドサイズを掛ければよいです。ただし、入力されるcalc_z_はローカルid なので、スレッドが担当する範囲の左端のidを足す必要があります。一つ目の物理軸なので、`label = 0`とします。クラス`CalcZ__2_Z_`の実装は必須ではありません。
 
-#### 3.1.2 計算空間 → 物理座標$v_x$の変換クラスの定義
+#### 3.1.2 計算空間 → 物理座標 $v_x$ の変換クラスの定義
 ```cpp
 // 例：計算空間 (vr, vt, vp) から 物理空間 vx への写像 (vx = vr * sin(vt) * cos(vp))
 
@@ -230,9 +230,9 @@ public:
 ```
 `class CalcVt_2_Vt`、`class CalcVt_2_Vt`および`class CalcVp_2_Vp`の実装は必須ではありませんが、プログラミングの簡単化のために作っています。$v_x$ を求めるには $sin,cos$ などの重たい計算が入るので、事前計算したものを`table`に入れてLUTすると高速化が期待できます。２つ目の物理軸なので、`label = 1`とします。`Physic_vy`, `Physic_vz`についても同様に実装してください。`label` はそれぞれ`2`, `3`となります。
 
-### 3.2 計算空間と物理空間の間の軽量テンソルの実装
+### 3.2 計算空間と物理空間の間の計量テンソルの実装
 
-軽量テンソルは以下のように書けます：
+計量テンソルは以下のように書けます：
 ```math
 \frac{\partial(z_c,v_r,v_\theta,v_\phi)}
      {\partial(z,v_x,v_y,v_z)}
@@ -245,8 +245,8 @@ public:
 \end{pmatrix}
 ```
 この行列の各要素を扱う`class`を実装していきます。
-#### 3.2.1 軽量テンソル要素の実装
-以下に軽量テンソル要素を扱うクラスを $\frac{\partial v_r}{\partial v_x}$ を例に示します。メンバ関数`.at()`で値を取得できる必要があります。`.at()`の引数は、計算空間のローカルグリッド４つです。この数は次元数に合わせて変更してください。
+#### 3.2.1 計量テンソル要素の実装
+以下に計量テンソル要素を扱うクラスを $\frac{\partial v_r}{\partial v_x}$ を例に示します。メンバ関数`.at()`で値を取得できる必要があります。`.at()`の引数は、計算空間のローカルグリッド４つです。この数は次元数に合わせて変更してください。
 ```cpp
 
 class Vr_diff_vx
@@ -281,9 +281,9 @@ public:
 ```
 事前に計算しておき、LUT すると高速化が期待できます。他の要素についても同様に実装してください。
 
-#### 3.2.2 軽量テンソルのインスタンス化
+#### 3.2.2 計量テンソルのインスタンス化
 
-`main()`関数内で以下のように軽量テンソルをインスタンス化してください。
+`main()`関数内で以下のように計量テンソルをインスタンス化してください。
 
 ```cpp
 const Independent independent;
