@@ -372,12 +372,7 @@ Because of its simplicity, it is often the first example used when implementing 
 
 ### Example Result
 
-```text
-[Original README Figure:
-1D advection simulation]
-```
-
----
+<img width="400" height="200" alt="advection_simulation" src="https://github.com/user-attachments/assets/fddd6b4f-9ab8-4f26-bab5-a6a8d2a2e0f0" />
 
 ## 2. `langmuir_wave.cpp`
 
@@ -411,12 +406,7 @@ The resulting spectrum reproduces the theoretical Langmuir-wave dispersion relat
 
 ### Example Result
 
-```text
-[Original README Figure:
-Langmuir-wave dispersion relation]
-```
-
----
+<img width="300" height="360" alt="image (5)" src="https://github.com/user-attachments/assets/629669a2-3e3f-42b8-b8a5-c272efbf37d4" />
 
 ## 3. `two_stream_instability.cpp`
 
@@ -446,12 +436,15 @@ These phase-space structures are important signatures of nonlinear kinetic plasm
 
 ### Example Result
 
-```text
-[Original README Video:
-Phase-space hole formation]
-```
-
----
+<video 
+  src="https://github.com/user-attachments/assets/a05559ea-120e-4537-91ee-18cb6a120e17"
+  style="width: 20% !important; display: block !important;" 
+  autoplay 
+  loop 
+  muted 
+  playsinline
+  preload="auto">
+</video>
 
 ## 4. `bernstein_mode_wave_super.cpp`
 
@@ -492,10 +485,8 @@ The resulting spectrum reproduces the theoretical Bernstein-mode dispersion rela
 
 ### Example Result
 
-```text
-[Original README Figure:
-Bernstein-mode dispersion relation]
-```
+<img width="320" height="240" alt="spectrum_bernstein_0 1c (1)" src="https://github.com/user-attachments/assets/506754b8-e764-44d6-b2e0-bd42d72c9300" />
+
 
 ### Parallel Computing
 
@@ -547,6 +538,9 @@ The computed spectrum agrees with the theoretical Whistler-wave dispersion relat
 
 The measured wave growth rate agrees with linear kinetic theory.
 
+
+<img width="320" height="240" alt="spectrum (6)" src="https://github.com/user-attachments/assets/7ae8a1ed-ea2f-4955-8413-d85077dac184" />
+
 #### Growth Rate as a Function of Wavenumber
 
 The dependence
@@ -559,12 +553,9 @@ matches theoretical predictions.
 
 ### Example Results
 
-```text
-[Original README Figures:
-Whistler-wave dispersion relation
-Growth-rate comparison
-γ(k) comparison]
-```
+<img width="256" height="192" alt="growth_rate (2)" src="https://github.com/user-attachments/assets/41042eea-3e96-4c1f-97c4-3752a0c5e905" />
+<img width="300" height="180" alt="growth_rate_k_gamma (4)" src="https://github.com/user-attachments/assets/9e821917-d5f9-4400-84cd-75b9d81a037d" />
+
 
 ### Parallel Computing
 
