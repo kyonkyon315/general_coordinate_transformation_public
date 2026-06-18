@@ -2,6 +2,8 @@
 # Generic-Vlasov-Solver
 
 任意次元・任意座標系においてプラズマの運動論的（Kinetic）シミュレーションを行うための、汎用かつ高パフォーマンスなVlasovソルバーです。
+> **【お知らせ】**
+> 本リポジトリは、主要な開発を行っている非公開リポジトリから一般公開用に抽出・コピーしたものです。過去のコミット履歴や一部の内部向け情報等は含まれておりません。あらかじめご了承ください。
 
 ## 概要
 本プロジェクトは、計算空間（座標軸、グリッド数、境界条件、並列数）をC++のテンプレート・メタ・プログラミングを用いて完全に抽象化し、最小限のコード変更で多種多様な次元・座標系（デカルト座標系、円筒座標系、ダイポール座標系などへの物理空間写像）のプラズマ波動シミュレーションを実行できるように設計されています。
@@ -41,9 +43,14 @@ $$\frac{\partial f}{\partial t} + \mathbf{v} \cdot \nabla_x f + \frac{q}{m} (\ma
 1. **`1D0V.cpp`**
    - 最もシンプルな1次元1軸の移流・境界条件テスト用コード。
    - 新たなVlasov scheme をテストするために使うこともできる。
+<img width="400" height="200" alt="advection_simulation" src="https://github.com/user-attachments/assets/fddd6b4f-9ab8-4f26-bab5-a6a8d2a2e0f0" />
+
 2. **`langmuir_wave.cpp`**
    - 1D1V 
    - デカルト座標系におけるラングミュア波の線形シミュレーション。
+   - 下の図は、得られた電場 $E(x,t)$ を波数・周波数空間へフーリエ変換したものです。
+<img width="300" height="360" alt="image (5)" src="https://github.com/user-attachments/assets/629669a2-3e3f-42b8-b8a5-c272efbf37d4" />
+
 3. **`two_stream_instability.cpp`**
    - 1D1V 
    - プラズマにおける2流体不安定性（Two-stream instability）の成長と、位相空間（ $x-v_x$ ）における非線形渦（フェーズスペース・ホール）形成のシミュレーション。
@@ -62,11 +69,17 @@ $$\frac{\partial f}{\partial t} + \mathbf{v} \cdot \nabla_x f + \frac{q}{m} (\ma
    - 背景磁場に対して垂直に伝搬する静電場の時間発展を解く。
    - Bernstein mode wave の分散関係が得られる。
    - スーパーコンピューター向けのMPI並列化バージョン
+   - 下の図は、得られた電場 $E(x,t)$ を波数・周波数空間へフーリエ変換したものです。バーンスタイン波の分散関係が確認できます。
+<img width="320" height="240" alt="spectrum_bernstein_0 1c (1)" src="https://github.com/user-attachments/assets/506754b8-e764-44d6-b2e0-bd42d72c9300" />
+
 5. **`whistler_cylinder_super.cpp`**
    - 1D3V, 速度空間は円筒座標
    - 不均一・異方性プラズマ中におけるホイッスラー波（Whistler wave）の伝搬や波動粒子相互作用をシミュレーション。
    - スーパーコンピューター向けのMPI並列化バージョン
    - Whistler-mode wave の分散関係が得られるほか、波の成長率が理論と一致することが確認できる。
+<img width="320" height="240" alt="spectrum (6)" src="https://github.com/user-attachments/assets/7ae8a1ed-ea2f-4955-8413-d85077dac184" />
+<img width="256" height="192" alt="growth_rate (2)" src="https://github.com/user-attachments/assets/41042eea-3e96-4c1f-97c4-3752a0c5e905" />
+<img width="300" height="180" alt="growth_rate_k_gamma (4)" src="https://github.com/user-attachments/assets/9e821917-d5f9-4400-84cd-75b9d81a037d" />
 
 ## 必要環境・依存ライブラリ
 
