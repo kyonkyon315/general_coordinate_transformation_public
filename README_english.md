@@ -553,8 +553,8 @@ matches theoretical predictions.
 
 ### Example Results
 
-<img width="256" height="192" alt="growth_rate (2)" src="https://github.com/user-attachments/assets/41042eea-3e96-4c1f-97c4-3752a0c5e905" />
-<img width="300" height="180" alt="growth_rate_k_gamma (4)" src="https://github.com/user-attachments/assets/9e821917-d5f9-4400-84cd-75b9d81a037d" />
+<img width="320" height="240" alt="growth_rate (2)" src="https://github.com/user-attachments/assets/41042eea-3e96-4c1f-97c4-3752a0c5e905" />
+<img width="375" height="225" alt="growth_rate_k_gamma (4)" src="https://github.com/user-attachments/assets/9e821917-d5f9-4400-84cd-75b9d81a037d" />
 
 
 ### Parallel Computing
@@ -563,7 +563,6 @@ This example is specifically designed for large-scale MPI execution on supercomp
 
 The phase space is decomposed across multiple dimensions, allowing simulations with thousands of MPI processes.
 
----
 
 # Software Requirements
 
@@ -578,54 +577,6 @@ Any compiler supporting C++17 or newer:
 * Intel Compiler
 * Other C++17-compliant compilers
 
-## MPI Library
-
-An MPI implementation is required for parallel execution:
-
-* OpenMPI
-* MPICH
-* Intel MPI
-* Other MPI-compatible implementations
-
----
-
-# Mathematical Framework
-
-The framework is designed around a complete separation between:
-
-* Computational space
-* Physical space
-
-The numerical solver operates exclusively on a uniform computational grid.
-
-Users define a mapping
-
-```math
-(i,j,k,\ldots)
-\rightarrow
-(x,y,z,v_x,v_y,v_z,\ldots)
-```
-
-that connects computational coordinates to physical coordinates.
-
-By providing:
-
-* Coordinate transformation classes
-* Jacobian matrices
-* Metric tensor components
-
-the same solver can be applied to virtually any coordinate system.
-
-This design enables simulations in:
-
-* Cartesian coordinates
-* Cylindrical coordinates
-* Spherical coordinates
-* Dipole coordinates
-* Custom user-defined coordinates
-
-without modifying the underlying numerical infrastructure.
-
 # Usage Guide
 
 This framework is designed to allow users to define arbitrary dimensions and coordinate systems at compile time. By completely separating the computational space (uniform grids used by the numerical solver) from the physical space (actual coordinates used in the physical model), complex coordinate systems can be implemented simply by providing the appropriate coordinate transformations and Jacobian components.
@@ -638,7 +589,6 @@ main/whistler_kappa_super.cpp
 
 as an example.
 
----
 
 # 1. Defining Dimensions, Grid Sizes, and MPI Decomposition
 
